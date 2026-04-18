@@ -1,47 +1,8 @@
 import { useState, useRef } from "react";
-
-const API_URL = "http://localhost:8000";
-
-function Header() {
-  return (
-    <header className="bg-green-700 text-white px-6 py-4 flex items-center gap-3 shadow-sm">
-      <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-        <span className="text-green-700 font-bold text-sm">M</span>
-      </div>
-      <div>
-        <h1 className="text-lg font-semibold leading-none">Magnolia Groovy Generator</h1>
-        <p className="text-green-200 text-xs mt-0.5">RAG-powered CMS script generator</p>
-      </div>
-      <div className="ml-auto flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-green-300 inline-block"></span>
-        <span className="text-green-200 text-xs">API connected</span>
-      </div>
-    </header>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="bg-white border-t border-gray-200 px-6 py-3 text-center">
-      <p className="text-gray-400 text-xs">
-        Magnolia Groovy Generator &mdash; Powered by LlamaIndex + Qdrant + Ollama
-      </p>
-    </footer>
-  );
-}
-
-function Loader() {
-  return (
-    <div className="flex items-center gap-3 py-4 px-2">
-      <div className="flex gap-1">
-        <span className="w-2 h-2 rounded-full bg-green-500 animate-bounce [animation-delay:0ms]"></span>
-        <span className="w-2 h-2 rounded-full bg-green-500 animate-bounce [animation-delay:150ms]"></span>
-        <span className="w-2 h-2 rounded-full bg-green-500 animate-bounce [animation-delay:300ms]"></span>
-      </div>
-      <span className="text-sm text-gray-500">Generating script...</span>
-    </div>
-  );
-}
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Loader from "../components/Loader";
+import { API_URL } from "../config";
 
 export default function App() {
   const [query, setQuery] = useState("");
