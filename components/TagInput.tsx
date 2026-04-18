@@ -46,6 +46,7 @@ const TagInput = ({ tags, setTags }: ITagInputProps) => {
           onKeyDown={handleKeyDown}
           placeholder="e.g. username, email, pageTitle..."
           className="flex-1 min-w-[120px] bg-transparent text-sm text-gray-800 placeholder-gray-400 outline-none"
+          autoComplete="off"
         />
       </div>
     );
