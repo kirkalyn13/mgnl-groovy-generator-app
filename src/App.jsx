@@ -6,6 +6,7 @@ import Error from "../components/Error";
 import InputCard from "../components/InputCard";
 import OutputCard from "../components/OutputCard";
 import { API_URL } from "../config";
+import { generateScript } from "../services/generatorService";
 
 export default function App() {
   const [query, setQuery] = useState("");
@@ -21,18 +22,7 @@ export default function App() {
     setResult(null);
 
     try {
-      const res = await fetch(`${API_URL}/generate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.detail || "Something went wrong.");
-      }
-
+      const data = generateScript()
       setResult(data);
       setTimeout(() => outputRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch (err) {
