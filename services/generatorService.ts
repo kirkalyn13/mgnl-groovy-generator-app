@@ -1,24 +1,12 @@
 import { API_URL } from "../config";
+import { get, post } from "./baseService";
 
-export const generateScript =  async(query: string) => {
-    const res = await fetch(`${API_URL}/generate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-        throw new Error(data.detail || "Something went wrong.");
-    }
+export const generateScript =  async(query: string, properties: string[]) => {
+    const res = await post(API_URL, "/generate", { query, properties })
+    return res
 }
 
 export const getHealthStatus =  async() => {
-    const res = await fetch(`${API_URL}/health`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" }
-    });
-
+    const res = await get(API_URL, "/health")
     return res.ok
 }

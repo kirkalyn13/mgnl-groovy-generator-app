@@ -1,12 +1,17 @@
+import Properties from "./Properties"
+
+
 interface IInputCard {
     query: string
     loading: boolean
     handleKeyDown: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void
     handleGenerate: () => void
     setQuery: React.Dispatch<React.SetStateAction<string>>
+    properties: string[]
+    setProperties: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-const InputCard = ({ query, loading, handleKeyDown, handleGenerate, setQuery}: IInputCard) => {
+const InputCard = ({ query, loading, handleKeyDown, handleGenerate, setQuery, properties, setProperties }: IInputCard) => {
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -21,6 +26,7 @@ const InputCard = ({ query, loading, handleKeyDown, handleGenerate, setQuery}: I
             onKeyDown={handleKeyDown}
             disabled={loading}
           />
+          <Properties properties={properties} setProperties={setProperties} />
           <div className="flex items-center justify-between mt-3">
             <span className="text-xs text-gray-400">Press Cmd+Enter to generate</span>
             <button

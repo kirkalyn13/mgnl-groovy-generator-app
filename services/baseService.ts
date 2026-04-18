@@ -1,0 +1,22 @@
+const REQUEST_HEADERS = { "Content-Type": "application/json" };
+
+export const get = async(url: string, path: string): Promise<any> => {
+    return await fetch(`${url}${path}`, {
+            method: "GET",
+            headers: REQUEST_HEADERS
+        });
+}
+
+export const post = async(url: string, path: string, body: any): Promise<any> => {
+    const res =  await fetch(`${url}${path}`, {
+            method: "POST",
+            headers: REQUEST_HEADERS,
+            body: JSON.stringify(body),
+        });
+
+    if (!res.ok) {
+        throw new Error(res.statusText || "Something went wrong.");
+    }
+
+    return await res.json();
+}

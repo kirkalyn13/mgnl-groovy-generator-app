@@ -13,6 +13,7 @@ export default function App() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [properties, setProperties] = useState([]);
   const outputRef = useRef(null);
 
   const handleGenerate = async () => {
@@ -22,7 +23,7 @@ export default function App() {
     setResult(null);
 
     try {
-      const data = generateScript()
+      const data = await generateScript(query, properties)
       setResult(data);
       setTimeout(() => outputRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch (err) {
@@ -49,7 +50,14 @@ export default function App() {
     <div className="min-h-screen bg-gray-100 flex flex-col">
       <Header />
       <main className="flex-1 max-w-3xl w-full mx-auto px-4 py-8 flex flex-col gap-6">
-        <InputCard query={query} handleKeyDown={handleKeyDown} handleGenerate={handleGenerate} setQuery={setQuery} loading={loading}/>
+        <InputCard 
+          query={query} 
+          handleKeyDown={handleKeyDown}
+          handleGenerate={handleGenerate}
+          setQuery={setQuery}
+          loading={loading}
+          properties={properties}
+          setProperties={setProperties} />
         {loading && <Loader message="Generating script..."/>}
         {error && Error}
         {result && <OutputCard result={result} handleCopy={handleCopy}/>}
