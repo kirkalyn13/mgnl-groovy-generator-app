@@ -5,6 +5,7 @@ import Loader from "../components/Loader";
 import Error from "../components/Error";
 import InputCard from "../components/InputCard";
 import OutputCard from "../components/OutputCard";
+import InfoPopup from "../components/InfoPopup";
 import { API_URL } from "../config";
 import { generateScript } from "../services/generatorService";
 
@@ -48,6 +49,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
+      <InfoPopup />
       <Header />
       <main className="flex-1 max-w-3xl w-full mx-auto px-4 py-8 flex flex-col gap-6">
         <InputCard 
