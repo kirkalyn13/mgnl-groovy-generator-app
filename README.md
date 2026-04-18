@@ -1,16 +1,89 @@
-# React + Vite
+# Magnolia Groovy Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A RAG-powered web app for generating Magnolia CMS Groovy scripts using natural language prompts.
 
-Currently, two official plugins are available:
+Live Site: [mgnl-groovy-generator-app](https://mgnl-groovy-generator-app.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Demo](./assets/app-demo.gif)
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Magnolia Groovy Generator is a full-stack portfolio project that combines a FastAPI backend with a React + Vite frontend to generate context-aware Groovy scripts for Magnolia CMS. It uses Retrieval-Augmented Generation (RAG) to ground script generation on a curated set of example scripts, ensuring outputs are accurate and idiomatic.
+
+
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React, Vite, Tailwind CSS |
+| Backend | FastAPI, Python |
+| LLM & Embeddings | Ollama (`mistral`, `nomic-embed-text`) |
+| Vector Store | Qdrant |
+| RAG Framework | LlamaIndex |
+
+---
+
+## Features
+
+- Natural language to Groovy script generation
+- RAG pipeline grounded on example Magnolia CMS scripts
+- Expected properties input — tag-based field to guide script output
+- Input guard rails — blocks non-Groovy and modification requests
+- Output guard rails — validates and sanitizes generated scripts
+- Retry logic — automatically retries if output contains unwanted content
+- Rate limiting — 1 request per second per client
+- Fully local — runs entirely on your machine with no cloud API required
+
+---
+
+
+## Prerequisites
+
+- Python 3.11+
+- Node.js 18+
+- [Ollama](https://ollama.com) installed and running
+
+---
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/kirkalyn13/mgnl-groovy-generator-app
+cd mgnl-groovy-generator-app
+```
+
+### 2. Set up environment variables
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env`:
+
+```env
+API_URL="http://localhost:8000"
+API_DOCS_PATH="/docs"
+```
+
+### 3. Start the frontend
+
+```bash
+cd mgnl-groovy-generator-app
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Authors
+
+- [Engr. Kirk Alyn Santos](https://github.com/kirkalyn13)
+
+## License
+
+MIT
