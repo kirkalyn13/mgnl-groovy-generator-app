@@ -44,8 +44,8 @@ export default function App() {
   };
 
   const handleCopy = () => {
-    if (result?.script) {
-      navigator.clipboard.writeText(result.script);
+    if (result?.response) {
+      navigator.clipboard.writeText(result.response);
     }
   };
 
