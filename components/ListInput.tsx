@@ -13,7 +13,7 @@ const ListInput = ({ title, isOptional = true, placeholder, showTip = true, valu
   
   return (
     <>
-        <div>
+        <div className="my-2">
             <label className="block text-sm font-medium text-gray-700 mb-2">
             {title + (isOptional && " (Optional)")}
             {showTip && <span className="text-gray-400 font-normal ml-1">(press Enter or comma to add)</span>}
