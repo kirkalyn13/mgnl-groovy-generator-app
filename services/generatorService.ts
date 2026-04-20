@@ -1,8 +1,8 @@
 import { API_URL } from "../config";
 import { get, post } from "./baseService";
 
-export const generateScript =  async(query: string, properties: string[]) => {
-    const res = await post(API_URL, "/generate", { query, properties })
+export const generateScript =  async(query: string, workspaces: string[], properties: string[]) => {
+    const res = await post(API_URL, "/generate", { query, workspaces, properties })
     return res
 }
 

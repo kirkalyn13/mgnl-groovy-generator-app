@@ -1,11 +1,12 @@
 import { useState } from 'react'
 
 interface ITagInputProps {
+    placeholder: string
     tags: string[]
     setTags: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-const TagInput = ({ tags, setTags }: ITagInputProps) => {
+const TagInput = ({ placeholder = "", tags, setTags }: ITagInputProps) => {
   const [input, setInput] = useState("");
   
     const handleKeyDown = (e: { key: string; preventDefault: () => void; }) => {
@@ -44,7 +45,7 @@ const TagInput = ({ tags, setTags }: ITagInputProps) => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="e.g. username, email, pageTitle..."
+          placeholder={placeholder}
           className="flex-1 min-w-[120px] bg-transparent text-sm text-gray-800 placeholder-gray-400 outline-none"
           autoComplete="off"
         />

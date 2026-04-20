@@ -1,4 +1,6 @@
-import Properties from "./Properties"
+import { useAtom } from "jotai"
+import ListInput from "./ListInput"
+import { propertiesAtom, workspaceAtom } from "../store"
 
 
 interface IInputCard {
@@ -7,11 +9,12 @@ interface IInputCard {
     handleKeyDown: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void
     handleGenerate: () => void
     setQuery: React.Dispatch<React.SetStateAction<string>>
-    properties: string[]
-    setProperties: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-const InputCard = ({ query, loading, handleKeyDown, handleGenerate, setQuery, properties, setProperties }: IInputCard) => {
+const InputCard = ({ query, loading, handleKeyDown, handleGenerate, setQuery }: IInputCard) => {
+  const [ workspaces, setWorkspaces] = useAtom(workspaceAtom);
+  const [ properties, setProperties] = useAtom(propertiesAtom);
+
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -26,7 +29,8 @@ const InputCard = ({ query, loading, handleKeyDown, handleGenerate, setQuery, pr
             onKeyDown={handleKeyDown}
             disabled={loading}
           />
-          <Properties properties={properties} setProperties={setProperties} />
+          <ListInput title="Workspaces" placeholder="e.g. website, dam, articles..." values={workspaces} setValues={setWorkspaces}  />
+          <ListInput title="Expected properties" placeholder="e.g. path, slug, status..." showTip={false} values={properties} setValues={setProperties}  />
           <div className="flex items-center justify-between mt-3">
             <span className="text-xs text-gray-400">Press Cmd+Enter to generate</span>
             <button

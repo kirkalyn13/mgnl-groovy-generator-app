@@ -8,14 +8,17 @@ import OutputCard from "../components/OutputCard";
 import InfoPopup from "../components/InfoPopup";
 import { API_URL } from "../config";
 import { generateScript } from "../services/generatorService";
+import { useAtom } from "jotai";
+import { propertiesAtom, workspaceAtom } from "../store";
 
 export default function App() {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [properties, setProperties] = useState([]);
   const outputRef = useRef(null);
+  const [ workspaces ] = useAtom(workspaceAtom)
+  const [ properties ] = useAtom(propertiesAtom)
 
   const handleGenerate = async () => {
     if (!query.trim()) return;
@@ -24,7 +27,7 @@ export default function App() {
     setResult(null);
 
     try {
-      const data = await generateScript(query, properties)
+      const data = await generateScript(query, workspaces, properties)
       setResult(data);
       setTimeout(() => outputRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch (err) {
@@ -58,8 +61,7 @@ export default function App() {
           handleGenerate={handleGenerate}
           setQuery={setQuery}
           loading={loading}
-          properties={properties}
-          setProperties={setProperties} />
+          />
         {loading && <Loader message="Generating script..."/>}
         {error && Error}
         {result && <OutputCard result={result} handleCopy={handleCopy}/>}
