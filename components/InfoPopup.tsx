@@ -40,7 +40,7 @@ export default function InfoPopup() {
         <div className="flex flex-col gap-3 text-sm text-gray-600">
           <p>This app requires the following services to be running locally:</p>
           <p className="text-gray-400 text-xs">
-            Run <code className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">ollama serve</code> before starting.
+            Run <code className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">ollama serve</code> and <code className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">mgnl-groovy-generator</code> server before starting.
           </p>
         </div>
 
