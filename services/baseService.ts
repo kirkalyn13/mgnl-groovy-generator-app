@@ -15,7 +15,8 @@ export const post = async(url: string, path: string, body: any): Promise<any> =>
         });
 
     if (!res.ok) {
-        throw new Error(res.statusText || "Something went wrong.");
+        const errorBody = await res.json();
+        throw new Error(errorBody.detail || "Something went wrong.");
     }
 
     return await res.json();

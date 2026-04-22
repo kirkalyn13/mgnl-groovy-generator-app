@@ -31,6 +31,7 @@ export default function App() {
       setResult(data);
       setTimeout(() => outputRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch (err) {
+      console.error("ERROR", err)
       setError(err.message);
     } finally {
       setLoading(false);
@@ -63,7 +64,7 @@ export default function App() {
           loading={loading}
           />
         {loading && <Loader message="Generating script..."/>}
-        {error && Error}
+        {error && <Error error={error} />}
         {result && <OutputCard result={result} handleCopy={handleCopy}/>}
       </main>
       <Footer />
