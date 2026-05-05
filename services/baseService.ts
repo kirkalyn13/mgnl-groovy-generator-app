@@ -1,9 +1,12 @@
-const REQUEST_HEADERS = { "Content-Type": "application/json" };
+const REQUEST_HEADERS = { 
+    "Content-Type": "application/json",
+    "X-API-Key": import.meta.env.VITE_API_KEY ?? "",
+ };
 
 export const get = async(url: string, path: string): Promise<any> => {
     return await fetch(`${url}${path}`, {
             method: "GET",
-            headers: REQUEST_HEADERS
+            headers: REQUEST_HEADERS,
         });
 }
 
