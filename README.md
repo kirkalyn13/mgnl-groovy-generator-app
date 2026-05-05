@@ -82,6 +82,13 @@ npm run dev
 
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
+## Run with Docker
+
+```bash
+docker build -t magnolia-rag-frontend .
+docker run -p 5173:5173 magnolia-rag-frontend
+```
+
 ## Authors
 
 - [Engr. Kirk Alyn Santos](https://github.com/kirkalyn13)
