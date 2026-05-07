@@ -18,7 +18,7 @@ Magnolia Groovy Generator is a full-stack portfolio project that combines a Fast
 |---|---|
 | Frontend | React, Vite, Tailwind CSS |
 | Backend | FastAPI, Python |
-| LLM & Embeddings | Ollama (`mistral`, `nomic-embed-text`) |
+| LLM & Embeddings | Ollama (`mistral`, `nomic-embed-text`, `qwen3.5`) |
 | Vector Store | Qdrant |
 | RAG Framework | LlamaIndex |
 | CMS Integration | Magnolia CMS |
