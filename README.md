@@ -12,7 +12,6 @@ Live Site: [mgnl-groovy-generator-app](https://mgnl-groovy-generator-app.vercel.
 Magnolia Groovy Generator is a full-stack portfolio project that combines a FastAPI backend with a React + Vite frontend to generate context-aware Groovy scripts for Magnolia CMS. It uses Retrieval-Augmented Generation (RAG) to ground script generation on a curated set of example scripts, ensuring outputs are accurate and idiomatic.
 
 
-
 ## Tech Stack
 
 | Layer | Technology |
@@ -23,10 +22,55 @@ Magnolia Groovy Generator is a full-stack portfolio project that combines a Fast
 | Vector Store | Qdrant |
 | RAG Framework | LlamaIndex |
 | CMS Integration | Magnolia CMS |
+| Observability | LangFuse |
+| Memory | Redis |
 
 ## Architecture
 
-![Architecture](./src/assets/diagram.svg)
+```mermaid
+flowchart RL
+
+    subgraph CLIENTS["Clients"]
+        direction TB
+        REACT["⚛️   React + Vite UI"]
+        MAGNOLIA["📝 Magnolia CMS
+        Custom Action"]
+    end
+
+    subgraph SESSION["Session Store"]
+        direction TB
+        REDIS["🔴 Redis
+        (if REDIS_URL is set)"]
+        MEMORY["🧠 In-Memory
+        (fallback)"]
+    end
+
+    CLIENTS -->|"HTTP Request"| REST["🌐 REST API
+    POST /v1/generate
+    POST /v1/ingest"]
+    REST --> FASTAPI["⚡ FastAPI Server"]
+    FASTAPI --> OLLAMA["🦙 Ollama LLM
+    mistral · nomic-embed-text"]
+    FASTAPI <--> QDRANT["🗄️ Qdrant
+    Vector Store"]
+    OLLAMA --> QDRANT
+    FASTAPI -->|"JSON Response"| CLIENTS
+    FASTAPI -->|"Traces & Metrics"| LANGFUSE["📊 Langfuse
+    Observability"]
+    FASTAPI <-->|"Read / Write Session"| SESSION
+
+    style REACT fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#000000
+    style MAGNOLIA fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#000000
+    style CLIENTS fill:#ffffff,stroke:#16a34a,stroke-width:1px,stroke-dasharray:5,color:#000000
+    style REST fill:#f9fafb,stroke:#6b7280,stroke-width:2px,color:#000000
+    style FASTAPI fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#000000
+    style OLLAMA fill:#fefce8,stroke:#ca8a04,stroke-width:2px,color:#000000
+    style QDRANT fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#000000
+    style LANGFUSE fill:#fdf4ff,stroke:#a855f7,stroke-width:2px,color:#000000
+    style REDIS fill:#fff1f2,stroke:#e11d48,stroke-width:2px,color:#000000
+    style MEMORY fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#000000
+    style SESSION fill:#ffffff,stroke:#e11d48,stroke-width:1px,stroke-dasharray:5,color:#000000
+```
 
 ## Features
 
@@ -38,8 +82,8 @@ Magnolia Groovy Generator is a full-stack portfolio project that combines a Fast
 - Retry logic — automatically retries if output contains unwanted content
 - Rate limiting — 1 request per second per client
 - Fully local — runs entirely on your machine with no cloud API required
+- Session Memory - remembers session requests to refine succeeding queries
 
----
 
 
 ## Prerequisites
@@ -48,7 +92,7 @@ Magnolia Groovy Generator is a full-stack portfolio project that combines a Fast
 - Node.js 18+
 - [Ollama](https://ollama.com) installed and running
 
----
+
 
 ## Getting Started
 
