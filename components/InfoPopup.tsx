@@ -38,10 +38,18 @@ export default function InfoPopup() {
 
         {/* Body */}
         <div className="flex flex-col gap-3 text-sm text-gray-600">
-          <p>This app requires the following services to be running locally:</p>
-          <p className="text-gray-400 text-xs">
-            Run <code className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">ollama serve</code> and <code className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">mgnl-groovy-generator</code> server before starting.
-          </p>
+          <p>This app requires the backend server to be running and reachable.</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li className="text-gray-400 text-xs">
+              Running locally? Start <code className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">ollama serve</code> and the <code className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">mgnl-groovy-generator</code> server before using the app.
+            </li>
+            <li className="text-gray-400 text-xs">
+              Using the hosted version? The backend may take a moment to spin up if it's been idle — please wait a few seconds and try again.
+            </li>
+            <li className="text-gray-400 text-xs font-bold">
+              To keep the service available for everyone, <span className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">requests are limited to one every 12 seconds</span>— you may see a brief wait during busy periods.
+            </li>
+          </ul>
         </div>
 
         {/* Footer */}
