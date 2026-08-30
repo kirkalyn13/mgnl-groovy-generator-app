@@ -47,7 +47,7 @@ export default function InfoPopup() {
               Using the hosted version? The backend may take a moment to spin up if it's been idle — please wait a few seconds and try again.
             </li>
             <li className="text-gray-400 text-xs font-bold">
-              To keep the service available for everyone, <span className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">requests are limited to one every 12 seconds</span>— you may see a brief wait during busy periods.
+              To keep the service available for everyone, <span className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">requests are limited to one every 5 seconds</span> — you may see a brief wait during busy periods.
             </li>
           </ul>
         </div>
