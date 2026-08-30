@@ -18,8 +18,10 @@ export const post = async(url: string, path: string, body: any): Promise<any> =>
         });
 
     if (!res.ok) {
-        const errorBody = await res.json();
-        throw new Error(errorBody.detail || "Something went wrong.");
+        const errorBody = await res.json().catch(() => null);
+        const err = new Error(errorBody?.detail || "Something went wrong.") as Error & { status?: number };
+        err.status = res.status;
+        throw err;
     }
 
     return await res.json();

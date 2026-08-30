@@ -31,8 +31,12 @@ export default function App() {
       setResult(data);
       setTimeout(() => outputRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
     } catch (err) {
-      console.error("ERROR", err)
-      setError(err.message);
+      console.error("ERROR", err);
+      if (err.status === 429) {
+        setError("One request at a time, please — try again in a few seconds.");
+      } else {
+        setError(err.message);
+      }
     } finally {
       setLoading(false);
     }
