@@ -30,24 +30,24 @@ export default function InfoPopup() {
           </div>
           <button
             onClick={handleDismiss}
-            className="text-gray-400 hover:text-gray-600 text-xl leading-none mt-0.5"
+            className="text-gray-400 hover:text-black text-xl leading-none mt-0.5"
           >
             &times;
           </button>
         </div>
 
         {/* Body */}
-        <div className="flex flex-col gap-3 text-sm text-gray-600">
+        <div className="flex flex-col gap-3 text-sm text-black">
           <p>This app requires the backend server to be running and reachable.</p>
           <ul className="list-disc pl-5 space-y-1">
             <li className="text-gray-400 text-xs">
-              Running locally? Start <code className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">ollama serve</code> and the <code className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">mgnl-groovy-generator</code> server before using the app.
+              Using the <span className="bg-gray-100 px-1 py-0.5 rounded text-black">hosted version</span>? The backend may take a moment to spin up if it's been <span className="bg-gray-100 px-1 py-0.5 rounded text-black">idle</span> — please <span className="bg-gray-100 px-1 py-0.5 rounded text-black">wait a few seconds and try again.</span>
             </li>
             <li className="text-gray-400 text-xs">
-              Using the hosted version? The backend may take a moment to spin up if it's been idle — please wait a few seconds and try again.
+              Running on <span className="bg-gray-100 px-1 py-0.5 rounded text-black">local</span>? Start <code className="bg-gray-100 px-1 py-0.5 rounded text-black">ollama serve</code> and the <code className="bg-gray-100 px-1 py-0.5 rounded text-black">mgnl-groovy-generator</code> server before using the app.
             </li>
             <li className="text-gray-400 text-xs font-bold">
-              To keep the service available for everyone, <span className="bg-gray-100 px-1 py-0.5 rounded text-gray-600">requests are limited to one every 5 seconds</span> — you may see a brief wait during busy periods.
+              To keep the service available for everyone, <span className="bg-gray-100 px-1 py-0.5 rounded text-black">requests are limited to one every 5 seconds</span> — you may see a brief wait during busy periods.
             </li>
           </ul>
         </div>
