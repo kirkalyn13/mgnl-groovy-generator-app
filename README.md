@@ -18,7 +18,7 @@ Magnolia Groovy Generator is a full-stack portfolio project that combines a Fast
 |---|---|
 | Frontend | React, Vite, Tailwind CSS |
 | Backend | FastAPI, Python |
-| LLM & Embeddings | Ollama (`mistral`, `nomic-embed-text`, `qwen3.5`) |
+| LLM & Embeddings | Ollama (`qwen3.5`, `qwen2.5-coder`, `nomic-embed-text`) or Gemini API (`gemini-3.5-flash-lite`, `gemini-embedding-2-preview`) |
 | Vector Store | Qdrant |
 | RAG Framework | LlamaIndex |
 | CMS Integration | Magnolia CMS |
@@ -28,13 +28,12 @@ Magnolia Groovy Generator is a full-stack portfolio project that combines a Fast
 ## Architecture
 
 ```mermaid
-flowchart RL
+flowchart LR
 
     subgraph CLIENTS["Clients"]
         direction TB
         REACT["⚛️   React + Vite UI"]
-        MAGNOLIA["📝 Magnolia CMS
-        Custom Action"]
+        MAGNOLIA["📝 Magnolia CMS\nCustom Action"]
     end
 
     subgraph SESSION["Session Store"]
@@ -45,18 +44,18 @@ flowchart RL
         (fallback)"]
     end
 
-    CLIENTS -->|"HTTP Request"| REST["🌐 REST API
-    POST /v1/generate
-    POST /v1/ingest"]
-    REST --> FASTAPI["⚡ FastAPI Server"]
-    FASTAPI --> OLLAMA["🦙 Ollama LLM
-    mistral · nomic-embed-text"]
-    FASTAPI <--> QDRANT["🗄️ Qdrant
-    Vector Store"]
-    OLLAMA --> QDRANT
-    FASTAPI -->|"JSON Response"| CLIENTS
-    FASTAPI -->|"Traces & Metrics"| LANGFUSE["📊 Langfuse
-    Observability"]
+    subgraph LLM["LLM Providers"]
+        direction TB
+        OLLAMA["🦙 Ollama (Local)\nqwen3.5 · nomic-embed-text"]
+        GEMINI["✨ Gemini (External API)\nGoogle AI"]
+    end
+
+    CLIENTS <-->|"HTTP Request / JSON Response"| REST["🌐 REST API\nPOST /v1/generate\nPOST /v1/ingest"]
+    REST <--> FASTAPI["⚡ FastAPI Server"]
+    FASTAPI <-->|"Generate / Embed"| LLM
+    FASTAPI <--> QDRANT["🗄️ Qdrant Vector Store"]
+    OLLAMA -->|"Embeddings"| QDRANT
+    FASTAPI -->|"Traces & Metrics"| LANGFUSE["📊 Langfuse Observability"]
     FASTAPI <-->|"Read / Write Session"| SESSION
 
     style REACT fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#000000
@@ -65,6 +64,8 @@ flowchart RL
     style REST fill:#f9fafb,stroke:#6b7280,stroke-width:2px,color:#000000
     style FASTAPI fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#000000
     style OLLAMA fill:#fefce8,stroke:#ca8a04,stroke-width:2px,color:#000000
+    style GEMINI fill:#fff7ed,stroke:#ea580c,stroke-width:2px,color:#000000
+    style LLM fill:#ffffff,stroke:#ca8a04,stroke-width:1px,stroke-dasharray:5,color:#000000
     style QDRANT fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#000000
     style LANGFUSE fill:#fdf4ff,stroke:#a855f7,stroke-width:2px,color:#000000
     style REDIS fill:#fff1f2,stroke:#e11d48,stroke-width:2px,color:#000000
@@ -75,13 +76,13 @@ flowchart RL
 ## Features
 
 - Natural language to Groovy script generation
-- RAG pipeline grounded on example Magnolia CMS scripts
+- RAG pipeline grounded on example Magnolia CMS scripts, ingested from local files or pulled via Magnolia REST Delivery
 - Expected properties input — tag-based field to guide script output
 - Input guard rails — blocks non-Groovy and modification requests, if disabled (default)
 - Output guard rails — validates and sanitizes generated scripts
 - Retry logic — automatically retries if output contains unwanted content
-- Rate limiting — 1 request per second per client
-- Fully local — runs entirely on your machine with no cloud API required
+- Pluggable LLM support — Ollama and Gemini included out of the box; other providers (OpenAI, Anthropic, etc.) can be added via the `LLM_MODE` switch
+- Rate limiting — global request throttling to protect shared API quotas
 - Session Memory - remembers session requests to refine succeeding queries
 
 
