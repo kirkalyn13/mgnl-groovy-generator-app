@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getHealthStatus } from "../services/generatorService";
 import { API_DOCS_URL } from "../config";
 
@@ -11,7 +12,7 @@ const Header = () => {
 
   return (
     <header className="bg-green-700 text-white px-4 sm:px-6 py-4 flex items-center shadow-sm">
-      <div className="flex items-center gap-3">
+      <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition">
         <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
           <span className="text-green-700 font-bold text-sm">M</span>
         </div>
@@ -23,7 +24,7 @@ const Header = () => {
             RAG-powered CMS script generator
           </p>
         </div>
-      </div>
+      </Link>
       <div className="ml-auto flex items-center gap-4 sm:gap-6">
         <div className="flex items-center gap-2">
           <span
@@ -35,11 +36,10 @@ const Header = () => {
             API Connected
           </span>
         </div>
-        <a className="text-green-200 text-xs hover:text-white transition" href="/about">
+        <Link to="/about" className="text-green-200 text-xs hover:text-white transition">
           About
-        </a>
-        <a className="text-green-200 text-xs hover:text-white transition"
-          href={API_DOCS_URL}>
+        </Link>
+        <a href={API_DOCS_URL} className="text-green-200 text-xs hover:text-white transition">
           API Docs
         </a>
       </div>
