@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Loader from "../components/Loader";
@@ -6,6 +7,7 @@ import Error from "../components/Error";
 import InputCard from "../components/InputCard";
 import OutputCard from "../components/OutputCard";
 import InfoPopup from "../components/InfoPopup";
+import About from "../components/About";
 import { API_URL } from "../config";
 import { generateScript } from "../services/generatorService";
 import { useAtom } from "jotai";
@@ -55,22 +57,31 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-      <InfoPopup />
-      <Header />
-      <main className="flex-1 max-w-3xl w-full mx-auto px-4 py-8 flex flex-col gap-6">
-        <InputCard 
-          query={query} 
-          handleKeyDown={handleKeyDown}
-          handleGenerate={handleGenerate}
-          setQuery={setQuery}
-          loading={loading}
-          />
-        {loading && <Loader message="Generating script..."/>}
-        {error && <Error error={error} />}
-        {result && <OutputCard result={result} handleCopy={handleCopy}/>}
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-100 flex flex-col">
+        <Header />
+        <main className="flex-1 max-w-3xl w-full mx-auto px-4 py-8 flex flex-col gap-6">
+          <Routes>
+            <Route path="/" element={
+              <>
+                <InfoPopup />
+                <InputCard 
+                  query={query} 
+                  handleKeyDown={handleKeyDown}
+                  handleGenerate={handleGenerate}
+                  setQuery={setQuery}
+                  loading={loading}
+                />
+                {loading && <Loader message="Generating script..."/>}
+                {error && <Error error={error} />}
+                {result && <OutputCard result={result} handleCopy={handleCopy}/>}
+              </>
+            } />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }

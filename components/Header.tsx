@@ -35,6 +35,9 @@ const Header = () => {
             API Connected
           </span>
         </div>
+        <a className="text-green-200 text-xs hover:text-white transition" href="/about">
+          About
+        </a>
         <a className="text-green-200 text-xs hover:text-white transition"
           href={API_DOCS_URL}>
           API Docs
