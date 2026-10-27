@@ -11,16 +11,16 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="bg-green-700 text-white px-4 sm:px-6 py-4 flex items-center shadow-sm">
+    <header className="bg-gray-900 border-b border-gray-800 px-4 sm:px-6 py-4 flex items-center shadow-sm">
       <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition">
-        <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-          <span className="text-green-700 font-bold text-sm">M</span>
+        <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center">
+          <span className="text-green-400 font-bold text-sm">M</span>
         </div>
         <div>
-          <h1 className="text-sm sm:text-lg font-semibold leading-none">
+          <h1 className="text-sm sm:text-lg font-semibold leading-none text-white">
             Magnolia Groovy Generator
           </h1>
-          <p className="text-green-200 text-[10px] sm:text-xs mt-0.5">
+          <p className="text-gray-400 text-[10px] sm:text-xs mt-0.5">
             RAG-powered CMS script generator
           </p>
         </div>
@@ -29,17 +29,17 @@ const Header = () => {
         <div className="flex items-center gap-2">
           <span
             className={`w-2 h-2 rounded-full inline-block ${
-              isConnected ? "bg-green-300" : "bg-red-300"
+              isConnected ? "bg-green-500" : "bg-red-500"
             }`}
           ></span>
-          <span className="text-green-200 text-xs hidden sm:inline">
+          <span className="text-gray-400 text-xs hidden sm:inline">
             API Connected
           </span>
         </div>
-        <Link to="/about" className="text-green-200 text-xs hover:text-white transition">
+        <Link to="/about" className="text-gray-300 text-xs hover:text-white transition">
           About
         </Link>
-        <a href={API_DOCS_URL} className="text-green-200 text-xs hover:text-white transition">
+        <a href={API_DOCS_URL} className="text-gray-300 text-xs hover:text-white transition">
           API Docs
         </a>
       </div>

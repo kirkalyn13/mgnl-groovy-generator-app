@@ -25,16 +25,16 @@ const TagInput = ({ placeholder = "", tags, setTags }: ITagInputProps) => {
     const removeTag = (tag: string) => setTags(tags.filter((t) => t !== tag));
   
     return (
-      <div className="flex flex-wrap gap-2 border border-gray-300 bg-gray-50 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-green-500 focus-within:border-transparent min-h-[42px]">
+      <div className="flex flex-wrap gap-2 border border-gray-700 bg-gray-950 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-green-500 focus-within:border-transparent min-h-[42px]">
         {tags.map((tag: string) => (
           <span
             key={tag}
-            className="flex items-center gap-1 bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-md"
+            className="flex items-center gap-1 bg-green-900/30 text-green-300 text-xs font-medium px-2 py-1 rounded-md"
           >
             {tag}
             <button
               onClick={() => removeTag(tag)}
-              className="text-green-600 hover:text-green-900 leading-none"
+              className="text-green-400 hover:text-green-300 leading-none"
             >
               &times;
             </button>
