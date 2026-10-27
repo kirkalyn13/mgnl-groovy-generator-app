@@ -13,9 +13,7 @@ const Header = () => {
   return (
     <header className="bg-gray-900 border-b border-gray-800 px-4 sm:px-6 py-4 flex items-center shadow-sm">
       <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition">
-        <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center">
-          <span className="text-green-400 font-bold text-sm">M</span>
-        </div>
+        <img src="/logo.png" alt="Logo" className="w-8 h-8 rounded-full" />
         <div>
           <h1 className="text-sm sm:text-lg font-semibold leading-none text-white">
             Magnolia Groovy Generator
