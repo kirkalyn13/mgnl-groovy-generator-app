@@ -46,9 +46,22 @@ export default function App() {
     }
   };
 
-  const handleCopy = () => {
-    if (result?.response) {
-      navigator.clipboard.writeText(result.response);
+  const handleCopy = async () => {
+    const text = result?.response;
+    if (!text) return false;
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      const area = document.createElement("textarea");
+      area.value = text;
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.appendChild(area);
+      area.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(area);
+      return ok;
     }
   };
 
