@@ -8,6 +8,7 @@ import InputCard from "../components/InputCard";
 import OutputCard from "../components/OutputCard";
 import InfoPopup from "../components/InfoPopup";
 import About from "../components/About";
+import SEO from "../components/SEO";
 import { API_URL } from "../config";
 import { generateScript } from "../services/generatorService";
 import { useAtom } from "jotai";
@@ -58,6 +59,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <SEO />
       <div className="min-h-screen bg-gray-950 text-gray-100 flex flex-col">
         <Header />
         <main className="flex-1 flex flex-col">
@@ -65,8 +67,8 @@ export default function App() {
             <Route path="/" element={
               <div className="max-w-3xl w-full mx-auto px-4 py-8 flex flex-col gap-6">
                 <InfoPopup />
-                <InputCard 
-                  query={query} 
+                <InputCard
+                  query={query}
                   handleKeyDown={handleKeyDown}
                   handleGenerate={handleGenerate}
                   setQuery={setQuery}
