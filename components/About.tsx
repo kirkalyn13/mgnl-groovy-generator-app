@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { GITHUB_URL } from "../config";
 
 const FEATURES = [
   {
@@ -81,7 +82,7 @@ const About = () => {
                 Generate a script
               </Link>
               <a
-                href="https://github.com/kirkalyn13/mgnl-groovy-generator"
+                href={GITHUB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center rounded-md border border-gray-700 bg-transparent px-6 py-3 font-semibold text-gray-200 hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
