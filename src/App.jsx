@@ -74,9 +74,9 @@ export default function App() {
                   setQuery={setQuery}
                   loading={loading}
                 />
-                {loading && <Loader message="Generating script..."/>}
-                {error && <Error error={error} />}
-                {result && <OutputCard result={result} handleCopy={handleCopy}/>}
+                {loading && <div className="fade-up"><Loader message="Generating script..."/></div>}
+                {error && <div className="fade-up"><Error error={error} /></div>}
+                {result && <div className="fade-up"><OutputCard result={result} handleCopy={handleCopy}/></div>}
               </div>
             } />
             <Route path="/about" element={<About />} />
