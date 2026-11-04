@@ -47,12 +47,13 @@ export default function App() {
   };
 
   const handleCopy = async () => {
-    const text = result?.response;
+    const text = result?.script;
     if (!text) return false;
     try {
       await navigator.clipboard.writeText(text);
       return true;
-    } catch {
+    } catch (err) {
+      console.error("clipboard error:", err);
       const area = document.createElement("textarea");
       area.value = text;
       area.style.position = "fixed";
