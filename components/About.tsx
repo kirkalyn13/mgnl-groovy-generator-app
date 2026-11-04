@@ -81,10 +81,12 @@ const About = () => {
                 Generate a script
               </Link>
               <a
-                href="#how-it-works"
+                href="https://github.com/kirkalyn13/mgnl-groovy-generator"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center rounded-md border border-gray-700 bg-transparent px-6 py-3 font-semibold text-gray-200 hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
-                See how it works
+                View on Github
               </a>
             </div>
           </div>
@@ -104,7 +106,7 @@ const About = () => {
         </div>
       </section>
 
-      <section id="how-it-works" className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-16 scroll-mt-4">
+      <section className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-16">
         <h2 className="text-3xl font-bold tracking-tight text-white">From request to script in three steps</h2>
         <ol className="mt-10 grid gap-8 md:grid-cols-3">
           {STEPS.map((step, index) => (
