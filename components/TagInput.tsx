@@ -46,7 +46,7 @@ const TagInput = ({ placeholder = "", tags, setTags }: ITagInputProps) => {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
-          className="flex-1 min-w-[120px] bg-transparent text-sm text-gray-800 placeholder-gray-400 outline-none"
+          className="flex-1 min-w-[120px] bg-transparent text-sm text-white placeholder-gray-400 outline-none"
           autoComplete="off"
         />
       </div>
