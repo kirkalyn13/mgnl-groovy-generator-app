@@ -63,9 +63,9 @@ const STACK = [
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100">
+    <div className="bg-gray-950 text-gray-100">
       <section className="bg-gray-900 border-b border-gray-800">
-        <div className="max-w-6xl mx-auto px-4 py-16 sm:py-24 grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="px-4 sm:px-6 lg:px-8 py-10 sm:py-14 grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight text-white">
               Describe the task. Get the Groovy script.
@@ -104,7 +104,7 @@ const About = () => {
         </div>
       </section>
 
-      <section id="how-it-works" className="max-w-6xl mx-auto px-4 py-16 sm:py-20 scroll-mt-4">
+      <section id="how-it-works" className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 scroll-mt-4">
         <h2 className="text-3xl font-bold tracking-tight text-white">From request to script in three steps</h2>
         <ol className="mt-10 grid gap-8 md:grid-cols-3">
           {STEPS.map((step, index) => (
@@ -118,7 +118,7 @@ const About = () => {
       </section>
 
       <section className="bg-gray-900 border-y border-gray-800">
-        <div className="max-w-6xl mx-auto px-4 py-16 sm:py-20">
+        <div className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <h2 className="text-3xl font-bold tracking-tight text-white max-w-2xl">
             Built for Magnolia developers who would rather ship than search
           </h2>
@@ -133,7 +133,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-4 py-16 sm:py-20 grid gap-10 lg:grid-cols-2 lg:items-start">
+      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 grid gap-10 lg:grid-cols-2 lg:items-start">
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-white">Run it locally or in the cloud</h2>
           <p className="mt-4 text-gray-400 leading-relaxed max-w-xl">
@@ -156,7 +156,7 @@ const About = () => {
       </section>
 
       <section className="bg-green-950 border-t border-green-900">
-        <div className="max-w-6xl mx-auto px-4 py-14 sm:py-16 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="px-4 sm:px-6 lg:px-8 py-12 sm:py-14 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-white">Write your first script now</h2>
             <p className="mt-2 text-green-200">Describe what you need and copy the result.</p>

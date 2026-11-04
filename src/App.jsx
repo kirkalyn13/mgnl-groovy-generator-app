@@ -60,10 +60,10 @@ export default function App() {
     <BrowserRouter>
       <div className="min-h-screen bg-gray-950 text-gray-100 flex flex-col">
         <Header />
-        <main className="flex-1 max-w-3xl w-full mx-auto px-4 py-8 flex flex-col gap-6">
+        <main className="flex-1 flex flex-col">
           <Routes>
             <Route path="/" element={
-              <>
+              <div className="max-w-3xl w-full mx-auto px-4 py-8 flex flex-col gap-6">
                 <InfoPopup />
                 <InputCard 
                   query={query} 
@@ -75,7 +75,7 @@ export default function App() {
                 {loading && <Loader message="Generating script..."/>}
                 {error && <Error error={error} />}
                 {result && <OutputCard result={result} handleCopy={handleCopy}/>}
-              </>
+              </div>
             } />
             <Route path="/about" element={<About />} />
           </Routes>
