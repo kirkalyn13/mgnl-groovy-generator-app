@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Loader from "../components/Loader";
@@ -9,6 +9,7 @@ import OutputCard from "../components/OutputCard";
 import InfoPopup from "../components/InfoPopup";
 import About from "../components/About";
 import SEO from "../components/SEO";
+import NotFound from "../components/NotFound";
 import { API_URL } from "../config";
 import { generateScript } from "../services/generatorService";
 import { useAtom } from "jotai";
@@ -80,6 +81,9 @@ export default function App() {
               </div>
             } />
             <Route path="/about" element={<About />} />
+            <Route path="/home" element={<Navigate to="/" replace />} />
+            <Route path="/generate" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
