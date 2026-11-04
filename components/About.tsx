@@ -5,26 +5,72 @@ const FEATURES = [
   {
     title: "Grounded in real scripts",
     body: "Every script is generated from a curated library of Magnolia examples, so the output follows the patterns your CMS actually expects.",
+    icon: (
+      <>
+        <ellipse cx="12" cy="5" rx="9" ry="3" />
+        <path d="M3 5v14a9 3 0 0 0 18 0V5" />
+        <path d="M3 12a9 3 0 0 0 18 0" />
+      </>
+    ),
   },
   {
     title: "Ingest your own examples",
     body: "Load scripts from local files or pull them straight from Magnolia REST Delivery to teach the generator your conventions.",
+    icon: (
+      <>
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="17 8 12 3 7 8" />
+        <line x1="12" x2="12" y1="3" y2="15" />
+      </>
+    ),
   },
   {
     title: "Steer with expected properties",
     body: "Tag the fields you need and the generated script is guided to include them.",
+    icon: (
+      <>
+        <line x1="4" x2="4" y1="21" y2="14" />
+        <line x1="4" x2="4" y1="10" y2="3" />
+        <line x1="12" x2="12" y1="21" y2="12" />
+        <line x1="12" x2="12" y1="8" y2="3" />
+        <line x1="20" x2="20" y1="21" y2="16" />
+        <line x1="20" x2="20" y1="12" y2="3" />
+        <line x1="2" x2="6" y1="14" y2="14" />
+        <line x1="10" x2="14" y1="8" y2="8" />
+        <line x1="18" x2="22" y1="16" y2="16" />
+      </>
+    ),
   },
   {
     title: "Remembers your session",
     body: "Follow-up prompts build on earlier requests, so you can refine a script instead of starting over.",
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </>
+    ),
   },
   {
     title: "Guard rails on both ends",
     body: "Input checks keep requests on topic, output checks validate and sanitize the script, and bad results are retried automatically.",
+    icon: (
+      <>
+        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+        <path d="m9 12 2 2 4-4" />
+      </>
+    ),
   },
   {
     title: "Your choice of model",
     body: "Run locally with Ollama or connect Gemini. Other providers can be added through the LLM_MODE switch.",
+    icon: (
+      <>
+        <rect width="16" height="16" x="4" y="4" rx="2" />
+        <rect width="6" height="6" x="9" y="9" rx="1" />
+        <path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2" />
+      </>
+    ),
   },
 ];
 
@@ -170,16 +216,45 @@ const About = () => {
         </ol>
       </section>
 
-      <section className="bg-gray-900 border-y border-gray-800">
-        <div className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-16 text-center sm:text-left">
-          <h2 className="text-3xl font-bold tracking-tight text-white max-w-2xl">
+      <section className="relative overflow-hidden bg-gray-900 border-y border-gray-800">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(107,114,128,0.22)_1px,transparent_1px)] bg-[size:22px_22px] [mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 left-1/2 h-56 w-2/3 -translate-x-1/2 rounded-full bg-green-500/5 blur-3xl"
+        />
+
+        <div className="relative px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-16 text-center sm:text-left">
+          <p className="text-sm font-semibold uppercase tracking-widest text-green-400">Features</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white max-w-2xl">
             Built for Magnolia developers who would rather ship than search
           </h2>
-          <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto mt-4 h-1 w-14 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 sm:mx-0" />
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((feature) => (
-              <div key={feature.title} className="text-center sm:text-left">
-                <h3 className="text-lg font-semibold text-white">{feature.title}</h3>
-                <p className="mt-2 text-gray-400 leading-relaxed">{feature.body}</p>
+              <div
+                key={feature.title}
+                className="group rounded-xl border border-gray-800 bg-gray-950/60 p-6 text-center transition duration-300 hover:-translate-y-1 hover:border-green-500/40 hover:bg-gray-950 hover:shadow-lg hover:shadow-green-500/5 sm:text-left"
+              >
+                <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-lg border border-green-500/30 bg-green-500/10 text-green-400 transition duration-300 group-hover:border-green-400/60 group-hover:bg-green-500/20 sm:mx-0">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  >
+                    {feature.icon}
+                  </svg>
+                </span>
+                <h3 className="mt-4 text-lg font-semibold text-white">{feature.title}</h3>
+                <p className="mt-2 text-sm text-gray-400 leading-relaxed">{feature.body}</p>
               </div>
             ))}
           </div>
