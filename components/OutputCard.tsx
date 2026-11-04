@@ -11,7 +11,7 @@ interface IOutputCardProps {
 
 const OutputCard = ({ result, outputRef, handleCopy}: IOutputCardProps) => {
   return (
-          <div ref={outputRef} className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col gap-4">
+          <div ref={outputRef} className="bg-gray-900 border border-gray-800 rounded-xl p-6 flex flex-col gap-4">
             <MetaRow result={result} handleCopy={handleCopy} />
             <ScriptOutput result={result} />
             <QueryEcho result={result} />

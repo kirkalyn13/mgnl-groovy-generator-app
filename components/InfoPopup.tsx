@@ -17,48 +17,48 @@ export default function InfoPopup() {
   if (!visible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 px-4">
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-lg max-w-md w-full p-6 flex flex-col gap-4">
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
+      <div className="bg-gray-900 rounded-2xl border border-gray-800 shadow-lg max-w-md w-full p-6 flex flex-col gap-4">
 
         {/* Header */}
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-              <span className="text-green-700 text-lg">ℹ</span>
+            <div className="w-9 h-9 rounded-full bg-green-900/50 flex items-center justify-center flex-shrink-0">
+              <span className="text-green-400 text-lg">ℹ</span>
             </div>
-            <h2 className="text-base font-semibold text-gray-800">Before you get started</h2>
+            <h2 className="text-base font-semibold text-gray-100">Before you get started</h2>
           </div>
           <button
             onClick={handleDismiss}
-            className="text-gray-400 hover:text-black text-xl leading-none mt-0.5"
+            className="text-gray-400 hover:text-white text-xl leading-none mt-0.5"
           >
             &times;
           </button>
         </div>
 
         {/* Body */}
-        <div className="flex flex-col gap-3 text-sm text-black">
+        <div className="flex flex-col gap-3 text-sm text-gray-200">
           <p>This app requires the backend server to be running and reachable.</p>
           <ul className="list-disc pl-5 space-y-1">
             {!isLocal && (
               <li className="text-gray-400 text-xs">
-                Using the <span className="bg-gray-100 px-1 py-0.5 rounded text-black">hosted version</span>? The backend may take a moment to spin up if it's been <span className="bg-gray-100 px-1 py-0.5 rounded text-black">idle</span> — please <span className="bg-gray-100 px-1 py-0.5 rounded text-black">wait a few seconds and try again.</span>
+                Using the <span className="bg-gray-800 px-1 py-0.5 rounded text-gray-200">hosted version</span>? The backend may take a moment to spin up if it's been <span className="bg-gray-800 px-1 py-0.5 rounded text-gray-200">idle</span> — please <span className="bg-gray-800 px-1 py-0.5 rounded text-gray-200">wait a few seconds and try again.</span>
               </li>
             )}
             {isLocal && (
               <li className="text-gray-400 text-xs">
-                Running locally? Start <code className="bg-gray-100 px-1 py-0.5 rounded text-black">ollama serve</code> and the <code className="bg-gray-100 px-1 py-0.5 rounded text-black">mgnl-groovy-generator</code> server before using the app.
+                Running locally? Start <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-200">ollama serve</code> and the <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-200">mgnl-groovy-generator</code> server before using the app.
               </li>
             )}
             <li className="text-gray-400 text-xs font-bold">
-              To keep the service available for everyone, <span className="bg-gray-100 px-1 py-0.5 rounded text-black">requests are limited to one every 5 seconds</span> — you may see a brief wait during busy periods.
+              To keep the service available for everyone, <span className="bg-gray-800 px-1 py-0.5 rounded text-gray-200">requests are limited to one every 5 seconds</span> — you may see a brief wait during busy periods.
             </li>
           </ul>
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between border-t border-gray-100 pt-4">
-          <label className="flex items-center gap-2 text-xs text-gray-500 cursor-pointer select-none">
+        <div className="flex items-center justify-between border-t border-gray-800 pt-4">
+          <label className="flex items-center gap-2 text-xs text-gray-400 cursor-pointer select-none">
             <input
               type="checkbox"
               onChange={(e) => {
