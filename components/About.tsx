@@ -107,11 +107,11 @@ const About = () => {
         </div>
       </section>
 
-      <section className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-16">
+      <section className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-16 text-center sm:text-left">
         <h2 className="text-3xl font-bold tracking-tight text-white">From request to script in three steps</h2>
         <ol className="mt-10 grid gap-8 md:grid-cols-3">
           {STEPS.map((step, index) => (
-            <li key={step.title} className="border-t-2 border-green-500 pt-4">
+            <li key={step.title} className="border-t-2 border-green-500 pt-4 text-center sm:text-left">
               <p className="text-sm font-semibold text-green-400">Step {index + 1}</p>
               <h3 className="mt-1 text-xl font-semibold text-white">{step.title}</h3>
               <p className="mt-2 text-gray-400 leading-relaxed">{step.body}</p>
@@ -121,13 +121,13 @@ const About = () => {
       </section>
 
       <section className="bg-gray-900 border-y border-gray-800">
-        <div className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-16">
+        <div className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-16 text-center sm:text-left">
           <h2 className="text-3xl font-bold tracking-tight text-white max-w-2xl">
             Built for Magnolia developers who would rather ship than search
           </h2>
           <div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((feature) => (
-              <div key={feature.title}>
+              <div key={feature.title} className="text-center sm:text-left">
                 <h3 className="text-lg font-semibold text-white">{feature.title}</h3>
                 <p className="mt-2 text-gray-400 leading-relaxed">{feature.body}</p>
               </div>
@@ -136,30 +136,40 @@ const About = () => {
         </div>
       </section>
 
-      <section className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-16 grid gap-10 lg:grid-cols-2 lg:items-start">
-        <div>
+      <section className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-16 grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div className="min-w-0 text-center sm:text-left">
           <h2 className="text-3xl font-bold tracking-tight text-white">Run it locally or in the cloud</h2>
           <p className="mt-4 text-gray-400 leading-relaxed max-w-xl">
             Keep everything on your machine with Ollama, or connect Gemini for hosted models. Requests are rate limited to protect shared API quotas, and every run is traced in LangFuse.
           </p>
+          <ul className="mt-5 flex flex-wrap gap-2" aria-label="Technology stack">
+            {STACK.map((item) => (
+              <li
+                key={item}
+                className="rounded-full border border-gray-700 bg-gray-900 px-4 py-1.5 text-sm font-medium text-gray-300"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <h2 className="mt-12 text-3xl font-bold tracking-tight text-white">Use Magnolia as a custom action</h2>
           <p className="mt-4 text-gray-400 leading-relaxed max-w-xl">
             Teams can also trigger the generator from inside Magnolia through a custom action, so scripts are one click away from the authoring environment.
           </p>
         </div>
-        <ul className="flex flex-wrap gap-2" aria-label="Technology stack">
-          {STACK.map((item) => (
-            <li
-              key={item}
-              className="rounded-full border border-gray-700 bg-gray-900 px-4 py-1.5 text-sm font-medium text-gray-300"
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
+
+        <div className="min-w-0">
+          <img
+            src="/mgnl-demo.gif"
+            alt="Magnolia custom action demo"
+            className="rounded-xl border border-gray-700 shadow-lg shadow-black/40 w-full h-auto"
+          />
+        </div>
       </section>
 
       <section className="bg-green-950 border-t border-green-900">
-        <div className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-14 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-14 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between text-center sm:text-left">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-white">Write your first script now</h2>
             <p className="mt-2 text-green-200">Describe what you need and copy the result.</p>
