@@ -153,10 +153,18 @@ const About = () => {
             ))}
           </ul>
 
-          <h2 className="mt-12 text-3xl font-bold tracking-tight text-white">Use Magnolia as a custom action</h2>
+          <h2 className="mt-12 text-3xl font-bold tracking-tight text-white">Integrate into Magnolia CMS</h2>
           <p className="mt-4 text-gray-400 leading-relaxed max-w-xl">
             Teams can also trigger the generator from inside Magnolia through a custom action, so scripts are one click away from the authoring environment.
           </p>
+          <a
+            href="https://github.com/kirkalyn13/mgnl-groovy-generator/blob/main/integrations/magnolia/INTEGRATION.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center rounded-md border border-gray-700 bg-transparent px-6 py-3 font-semibold text-gray-200 hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
+          >
+            Read integration docs
+          </a>
         </div>
 
         <div className="min-w-0">
@@ -169,7 +177,7 @@ const About = () => {
       </section>
 
       <section className="bg-green-950 border-t border-green-900">
-        <div className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-14 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between text-center sm:text-left">
+      <div className="px-4 sm:px-6 lg:w-10/12 lg:mx-auto lg:px-0 py-12 sm:py-14 flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-12 lg:gap-16 text-center sm:text-left">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-white">Write your first script now</h2>
             <p className="mt-2 text-green-200">Describe what you need and copy the result.</p>
