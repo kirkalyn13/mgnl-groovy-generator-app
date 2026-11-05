@@ -134,6 +134,8 @@ docker build -t magnolia-rag-frontend .
 docker run -p 5173:5173 magnolia-rag-frontend
 ```
 
-## Authors
+## Author
 
 - [Engr. Kirk Alyn Santos](https://github.com/kirkalyn13)
+
+© 2026 Kirk Alyn Santos. All rights reserved.
