@@ -4,8 +4,8 @@ A RAG-powered web app for generating Magnolia CMS Groovy scripts using natural l
 
 Live Site: [mgnl-groovy-generator-app](https://mgnl-groovy-generator-app.vercel.app/)
 
-![Demo](./src/assets/app-demo.gif)
-[▶ Watch Demo](https://drive.google.com/file/d/1pTJBK1EGd-dfmM8mIvov_rrAEOrY8xE7/view?usp=sharing)
+![Demo](./public/app-demo.gif)
+[▶ Watch Demo](https://drive.google.com/file/d/14FrqoY9GaKsmVx3kMg67dWm-OybCGajv/view?usp=drive_link)
 
 ## Overview
 
@@ -137,7 +137,3 @@ docker run -p 5173:5173 magnolia-rag-frontend
 ## Authors
 
 - [Engr. Kirk Alyn Santos](https://github.com/kirkalyn13)
-
-## License
-
-MIT
