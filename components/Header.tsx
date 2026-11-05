@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getHealthStatus } from "../services/generatorService";
 import { API_DOCS_URL, GITHUB_URL } from "../config";
+import { useHealthStatus } from "../hooks/useHealthStatus";
 
 const Header = () => {
-  const [isConnected, setIsConnected] = useState(false);
-
-  useEffect(() => {
-    getHealthStatus().then((ok) => setIsConnected(ok));
-  }, []);
+  const isConnected = useHealthStatus();
 
   return (
     <header className="bg-gray-900 border-b border-gray-800 px-4 sm:px-6 py-4 flex items-center shadow-sm">

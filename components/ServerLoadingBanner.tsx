@@ -1,14 +1,9 @@
-import { useEffect, useState } from "react";
-import { getHealthStatus } from "../services/generatorService";
+import { useHealthStatus } from "../hooks/useHealthStatus";
 
 export default function ServerLoadingBanner() {
-  const [isWarmingUp, setIsWarmingUp] = useState(true);
+  const isConnected = useHealthStatus();
 
-  useEffect(() => {
-    getHealthStatus().then((ok) => setIsWarmingUp(!ok));
-  }, []);
-
-  if (!isWarmingUp) return null;
+  if (isConnected) return null;
 
   return (
     <div className="bg-blue-900/20 border border-blue-800 rounded-lg p-4 flex items-center gap-3">
